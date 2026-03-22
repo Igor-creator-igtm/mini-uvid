@@ -154,7 +154,17 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
 
 function showInsight() {
 
+  const input = document.getElementById("q").value.trim();
   const result = document.getElementById("result");
+
+  if (input.length < 3) {
+
+    result.innerHTML =
+    "Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao da se prikaže.";
+
+    result.style.display = "block";
+    return;
+  }
 
   const texts = [
 
@@ -168,7 +178,7 @@ function showInsight() {
 
 "Ponavljanje u životu često ukazuje na to da se određeni deo iskustva još nije sagledao iz pravog ugla.<br><br>Kada se slične situacije vraćaju, to može značiti da se nalaziš u fazi ciklusa koja traži dublje razumevanje.<br><br>Ovaj prikaz daje početni pravac, ali ne pokazuje ceo tok.<br><br>Za potpun lični uvid potrebno je sagledati ceo ciklus."
 
-];
+  ];
 
   const random = Math.floor(Math.random() * texts.length);
 
