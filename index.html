@@ -238,10 +238,12 @@ function showInsight() {
   };
 
   function detectTheme(text) {
-    for (const theme in themes) {
-      for (const keyword of themes[theme]) {
-        if (text.includes(keyword)) {
-          return theme;
+  const priorityOrder = ["posao", "odnos", "novac", "umor", "zastoj", "nejasnoca", "ponavljanje"];
+
+  for (const theme of priorityOrder) {
+    for (const keyword of themes[theme]) {
+      if (text.includes(keyword)) {
+        return theme;
         }
       }
     }
