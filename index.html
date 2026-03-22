@@ -154,10 +154,19 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
       let text = "";
 
       if (value.length < 5) {
-        text = "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa i da iskustvo pokušava da se razume na dubljem nivou.";
-      } else {
-        text = "Kratak uvid može pokazati pravac, ali ne može dati celu sliku.<br><br>Za precizniji prikaz potrebno je sagledati lični kod, trenutni period i fazu kroz koju prolaziš.Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.";
-      }
+
+  text =
+  "Ponekad je dovoljno da se u jednoj rečenici napiše ono što se ponavlja, da bi obrazac počeo da se vidi jasnije.";
+
+} else {
+
+  text =
+  "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>" +
+  "Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa i da iskustvo pokušava da se razume na dubljem nivou.<br><br>" +
+  "Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>" +
+  "Za precizniji lični uvid potrebno je sagledati ceo ciklus.";
+
+}
 
       result.innerHTML = text + "<br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
       result.style.display = "block";
