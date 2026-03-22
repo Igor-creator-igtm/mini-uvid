@@ -151,49 +151,118 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
   </div>
 
   <script>
-
 function showInsight() {
-
-  const input = document.getElementById("q").value.trim();
+  const inputRaw = document.getElementById("q").value.trim();
   const result = document.getElementById("result");
 
-  if (input.length < 3) {
-
+  if (inputRaw.length < 3) {
     result.innerHTML =
-    "Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao da se prikaže.";
-
+      "<b>Početni uvid</b><br><br>" +
+      "Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao jasnije da se otvori.";
     result.style.display = "block";
     return;
   }
 
-  const texts = [
+  const input = inputRaw.toLowerCase();
 
-"Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+  const intro =
+    "Na osnovu onoga što si napisao, vidi se da se iskustvo oko \"" +
+    inputRaw +
+    "\" ne pojavljuje bez razloga.<br><br>";
 
-"Ponavljanje istih situacija obično znači da se iskustvo kreće kroz obrazac koji još nije do kraja primećen.<br><br>Kada se nešto vraća u različitim oblicima, to često pokazuje da se nalaziš u periodu u kome je potrebno sagledati širu sliku.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+  const themes = {
+    posao: [
+      "problem na poslu", "problemi na poslu", "posao", "rad", "firma",
+      "sef", "šef", "kolege", "kolega", "karijera", "radno mesto", "otkaz"
+    ],
+    odnos: [
+      "veza", "odnos", "partner", "partnerka", "partnerom", "partnerkom",
+      "brak", "ljubav", "devojka", "djevojka", "momak", "suprug", "supruga",
+      "porodica", "roditelji", "prijatelj", "prijatelji"
+    ],
+    novac: [
+      "novac", "pare", "dug", "dugovi", "finansije", "finansijski",
+      "plata", "zarada", "trosak", "trošak", "racuni", "računi"
+    ],
+    umor: [
+      "umor", "umoran", "umorna", "iscrpljen", "iscrpljena",
+      "nemam snage", "bezvoljno", "tezina", "težina", "stres", "pritisak"
+    ],
+    ponavljanje: [
+      "stalno", "ponavlja", "ponavljanje", "uvek", "uvijek",
+      "isti problem", "iste situacije", "isti krug", "opet isto"
+    ],
+    zastoj: [
+      "zastoj", "stojim u mestu", "stojim u mjestu", "blokada",
+      "zaglavljen", "zaglavljena", "nemam pomak", "bez pomaka", "tapkam"
+    ],
+    nejasnoca: [
+      "ne znam", "zbunjen", "zbunjena", "nejasno", "magla",
+      "izgubljen", "izgubljena", "ne razumem", "ne razumijem"
+    ]
+  };
 
-"Kada se određene okolnosti stalno vraćaju, to obično nije slučajnost već znak da se iskustvo odvija kroz određenu fazu ličnog ciklusa.<br><br>Obrazac se često vidi tek kada se zastane i pogleda šira slika sopstvenog kretanja.<br><br>Ovaj prikaz može pokazati pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus.",
+  const texts = {
+    posao: [
+      "Kada se slični problemi vraćaju kroz rad i svakodnevne obaveze, to često pokazuje da se ne ponavlja samo spoljašnja situacija, već i unutrašnji obrazac odnosa prema pritisku, granicama i sopstvenoj vrednosti.<br><br>Takvi periodi obično traže da se šira slika sagleda mirnije, umesto da se reaguje samo na trenutni problem.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Kada se isti teret javlja u poslovnom prostoru, to često znači da iskustvo pokušava da skrene pažnju na obrazac koji još nije jasno viđen.<br><br>Ponekad se ne ponavlja samo problem, već i način na koji mu prilaziš iznutra.<br><br>Ovaj prikaz može pokazati pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    odnos: [
+      "Kada se slične situacije vraćaju kroz odnose, to često pokazuje da se kroz bliskost ponavlja obrazac koji još nije potpuno razjašnjen.<br><br>Odnosi često otvaraju ono što se najteže vidi kada se posmatraš samo kroz razum.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Ponavljanje kroz odnos sa drugima obično nije slučajno, već znak da se isti unutrašnji obrazac pojavljuje u različitim oblicima.<br><br>Kada se to primeti, postaje moguće da se šira slika sagleda mirnije i jasnije.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    novac: [
+      "Kada se napetost, manjak ili pritisak stalno vraćaju kroz novac, to često ukazuje na dublji obrazac sigurnosti, vrednosti i odnosa prema osloncu.<br><br>Spoljašnji problem tada često nosi i unutrašnju poruku koja još nije potpuno viđena.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Ponavljanje sličnih finansijskih okolnosti često znači da se iskustvo kreće kroz obrazac koji traži šire sagledavanje, a ne samo trenutno rešavanje.<br><br>Kada se isti pritisak vraća, važno je videti i dublji tok koji ga prati.<br><br>Ovaj prikaz daje početni pravac, ali ne pokazuje ceo tok.<br><br>Za potpun lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    umor: [
+      "Kada se umor ili pritisak stalno vraćaju, to često pokazuje da se ne traži još napora, već drugačije sagledavanje onoga što se već dugo nosi.<br><br>Ponekad telo i svakodnevni ritam prvi pokažu da je obrazac stigao do tačke u kojoj traži više pažnje.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Osećaj iscrpljenosti koji se vraća često nije samo prolazna faza, već signal da se iskustvo ponavlja kroz obrazac koji još nije potpuno osvetljen.<br><br>Kada se zastane i pogleda širi period, slika obično postaje jasnija.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    ponavljanje: [
+      "Ono što se stalno vraća često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije ponavljaju kroz različite okolnosti, to obično znači da se nalaziš u periodu u kome je potrebno sagledati širu sliku svog ciklusa.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Ponavljanje istih osećaja ili situacija obično znači da iskustvo pokušava da skrene pažnju na obrazac koji još nije do kraja primećen.<br><br>Kada se to prepozna, postaje lakše razumeti zašto se isti krug vraća.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    zastoj: [
+      "Kada postoji osećaj zastoja, to često ne znači da se ništa ne događa, već da se iskustvo nalazi u fazi koja traži drugačije čitanje i više unutrašnje jasnoće.<br><br>Spolja može delovati kao mirovanje, ali iznutra se često priprema važan pomak u razumevanju.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Osećaj da stojiš u mestu često ukazuje na obrazac koji još nije razjašnjen, a ne nužno na to da nema kretanja.<br><br>Ponekad je upravo zastoj poziv da se sagleda širi tok kroz koji prolaziš.<br><br>Ovaj prikaz može pokazati pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    nejasnoca: [
+      "Kada je nešto dugo nejasno, to često znači da iskustvo još nije spremno da se vidi kroz brz odgovor, već kroz širu sliku i dublje povezivanje onoga što se ponavlja.<br><br>Nejasnoća ponekad nije odsustvo smisla, već znak da je potrebno drugačije sagledavanje.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Osećaj zbunjenosti često se javlja kada obrazac postoji, ali još nije potpuno imenovan.<br><br>Kada se zastane i pogleda širi period, ono što je delovalo maglovito često počinje da dobija oblik.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+    ],
+    opsti: [
+      "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+      "Ponavljanje istih situacija obično znači da se iskustvo kreće kroz obrazac koji još nije do kraja primećen.<br><br>Kada se nešto vraća u različitim oblicima, to često pokazuje da se nalaziš u periodu u kome je potrebno sagledati širu sliku.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+    ]
+  };
 
-"Osećaj da se iste situacije ponavljaju najčešće znači da postoji obrazac koji još nije potpuno razjašnjen.<br><br>Kada se iskustvo kreće kroz isti krug, to može pokazivati da se nalaziš u određenoj etapi ličnog razvoja.<br><br>Ovaj prikaz može pokazati pravac, ali ne i celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+  function detectTheme(text) {
+    for (const theme in themes) {
+      for (const keyword of themes[theme]) {
+        if (text.includes(keyword)) {
+          return theme;
+        }
+      }
+    }
+    return "opsti";
+  }
 
-"Ponavljanje u životu često ukazuje na to da se određeni deo iskustva još nije sagledao iz pravog ugla.<br><br>Kada se slične situacije vraćaju, to može značiti da se nalaziš u fazi ciklusa koja traži dublje razumevanje.<br><br>Ovaj prikaz daje početni pravac, ali ne pokazuje ceo tok.<br><br>Za potpun lični uvid potrebno je sagledati ceo ciklus.",
+  function pickRandom(arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
 
-"Kada se u životu ponavlja sličan osećaj ili slična situacija, to često znači da se iskustvo kreće kroz obrazac koji još nije potpuno osvetljen.<br><br>Ponekad je potrebno sagledati širi period da bi se razumelo zašto se isti krug vraća.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
-
-];
-  const random = Math.floor(Math.random() * texts.length);
-
-  const text = texts[random];
+  const detectedTheme = detectTheme(input);
+  const selectedText = pickRandom(texts[detectedTheme]);
 
   result.innerHTML =
-  "<b>Početni uvid</b><br><br>" +
-  text +
-  "<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
+    "<b>Početni uvid</b><br><br>" +
+    intro +
+    selectedText +
+    "<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
 
   result.style.display = "block";
-
 }
-
 </script>
 </body>
 </html>
