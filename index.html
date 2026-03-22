@@ -135,7 +135,12 @@
   font-size: 14px;
   color: #7a6f63;
   line-height: 1.6;
-} 
+}
+      .aftercta {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #8a7f72;
+}
     }
   </style>
 </head>
@@ -153,8 +158,9 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
       <button onclick="showInsight()">Pogledaj početni uvid</button>
 
 <p class="note">
-Dobićeš kratak početni prikaz obrasca koji se možda ponavlja.  
-Ovo je samo prvi korak, bez detaljne analize.
+Dobićeš kratak početni uvid koji može pokazati obrazac koji se možda ponavlja.
+Ovaj prikaz je samo prvi korak i ne daje potpunu sliku ličnog ciklusa.
+Za precizniji uvid potrebno je sagledati ceo tok kroz lični uvid.
 </p>
 
 <div class="result" id="result"></div>
@@ -272,7 +278,12 @@ function showInsight() {
     "<b>Početni uvid</b><br><br>" +
     intro +
     selectedText +
-    "<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
+    "<br><br>" +
+"Ovaj početni prikaz pokazuje samo deo obrasca. " +
+"Za precizniji lični uvid potrebno je sagledati ceo ciklus kroz lični pisani uvid." +
+"<br><br>" +
+"<a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>" +
+"<div class='aftercta'>Pisani lični dokument • radi se samo za tebe • bez plaćanja unapred</div>";
 
   result.style.display = "block";
 }
