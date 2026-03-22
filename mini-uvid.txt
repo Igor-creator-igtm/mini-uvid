@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kratak uvid</title>
+<style>
+body {
+font-family: Arial;
+text-align: center;
+padding: 20px;
+}
+
+input {
+width: 80%;
+padding: 10px;
+margin: 10px;
+}
+
+button {
+padding: 10px 20px;
+}
+
+#result {
+margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h3>Kratak uvid</h3>
+
+<p>Napiši šta ti se ponavlja</p>
+
+<input id="q">
+
+<br>
+
+<button onclick="show()">Prikaži uvid</button>
+
+<div id="result"></div>
+
+<script>
+function show() {
+
+document.getElementById("result").innerHTML =
+"Ono što se ponavlja često nije slučajno, već obrazac koji još nije jasno sagledan.<br><br>" +
+"<a href='https://www.unlocktheessence.com/licni-uvid'>Otvori dublji lični uvid</a>";
+
+}
+</script>
+
+</body>
+</html>
