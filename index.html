@@ -151,33 +151,38 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
   </div>
 
   <script>
-    function showInsight() {
-      const value = document.getElementById("q").value.trim();
-      const result = document.getElementById("result");
 
-      let text = "";
+function showInsight() {
 
-      if (value.length < 5) {
+  const result = document.getElementById("result");
 
-  text =
-  "Ponekad je dovoljno da se u jednoj rečenici napiše ono što se ponavlja, da bi obrazac počeo da se vidi jasnije.";
+  const texts = [
 
-} else {
+"Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa i da iskustvo pokušava da se razume na dubljem nivou.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
 
-  text =
-  "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>" +
-  "Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa i da iskustvo pokušava da se razume na dubljem nivou.<br><br>" +
-  "Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>" +
-  "Za precizniji lični uvid potrebno je sagledati ceo ciklus.";
+"Ponavljanje istih situacija obično znači da se iskustvo kreće kroz obrazac koji još nije do kraja primećen.<br><br>Kada se nešto vraća u različitim oblicima, to često pokazuje da se nalaziš u periodu u kome je potrebno sagledati širu sliku svog ciklusa.<br><br>Kratak prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
+
+"Kada se određene okolnosti stalno vraćaju, to obično nije slučajnost već znak da se iskustvo odvija kroz određenu fazu ličnog ciklusa.<br><br>Obrazac se često vidi tek kada se zastane i pogleda šira slika.<br><br>Ovaj kratki prikaz pokazuje pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus.",
+
+"Osećaj da se iste situacije ponavljaju najčešće znači da postoji obrazac koji još nije potpuno razjašnjen.<br><br>Kada se iskustvo kreće kroz isti krug, to može pokazivati da se nalaziš u određenoj etapi ličnog razvoja.<br><br>Kratak uvid može pokazati smer, ali ne i celu sliku.<br><br>Za precizniji prikaz potrebno je sagledati ceo ciklus.",
+
+"Ponavljanje u životu često ukazuje na to da se određeni deo iskustva još nije sagledao iz pravog ugla.<br><br>Kada se slične situacije vraćaju, to može značiti da se nalaziš u fazi ciklusa koja traži dublje razumevanje.<br><br>Ovaj prikaz daje početni pravac, ali ne pokazuje ceo tok.<br><br>Za potpun lični uvid potrebno je sagledati ceo ciklus."
+
+];
+
+  const random = Math.floor(Math.random() * texts.length);
+
+  const text = texts[random];
+
+  result.innerHTML =
+  "<b>Početni uvid</b><br><br>" +
+  text +
+  "<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
+
+  result.style.display = "block";
 
 }
 
-      result.innerHTML =
-"<b>Početni uvid</b><br><br>" +
-text +
-"<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
-      result.style.display = "block";
-    }
-  </script>
+</script>
 </body>
 </html>
