@@ -1,54 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="sr">
 <head>
-<meta charset="UTF-8">
-<title>Kratak uvid</title>
-<style>
-body {
-font-family: Arial;
-text-align: center;
-padding: 20px;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kratak uvid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-input {
-width: 80%;
-padding: 10px;
-margin: 10px;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f1ea;
+      color: #2f2a26;
+    }
 
-button {
-padding: 10px 20px;
-}
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-#result {
-margin-top: 20px;
-}
-</style>
+    .card {
+      width: 100%;
+      max-width: 620px;
+      background: #fffdf9;
+      border: 1px solid #e8dfd2;
+      border-radius: 18px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .intro {
+      margin: 0 auto 24px;
+      max-width: 500px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #5a5148;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 130px;
+      border: 1px solid #d8cdbf;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+      background: #fff;
+      color: #2f2a26;
+    }
+
+    textarea:focus {
+      border-color: #bca58a;
+      box-shadow: 0 0 0 3px rgba(188, 165, 138, 0.15);
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 14px 22px;
+      border: none;
+      border-radius: 12px;
+      background: #7a5c43;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      background: #684d38;
+    }
+
+    .result {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 14px;
+      background: #f8f3ec;
+      border: 1px solid #e6dbce;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 16px;
+      color: #3a342f;
+      display: none;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 18px;
+      color: #7a5c43;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .cta:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .card {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .intro,
+      textarea,
+      .result,
+      button {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Kratak uvid</h1>
+      <p class="intro">
+        Napiši jednom rečenicom šta ti se trenutno ponavlja.
+        Ovo je samo početni pogled, dovoljno da osetiš pravac.
+      </p>
 
-<h3>Kratak uvid</h3>
+      <textarea id="q" placeholder="Na primer: imam osećaj da mi se stalno vraćaju slične situacije i da ne uspevam da izađem iz istog kruga"></textarea>
 
-<p>Napiši šta ti se ponavlja</p>
+      <button onclick="showInsight()">Prikaži kratak uvid</button>
 
-<input id="q">
+      <div class="result" id="result"></div>
+    </div>
+  </div>
 
-<br>
+  <script>
+    function showInsight() {
+      const value = document.getElementById("q").value.trim();
+      const result = document.getElementById("result");
 
-<button onclick="show()">Prikaži uvid</button>
+      let text = "";
 
-<div id="result"></div>
+      if (value.length < 5) {
+        text = "Ponekad je dovoljno da zastaneš i napišeš jednu jednostavnu rečenicu o onome što se ponavlja. Tek tada obrazac počinje da se vidi jasnije.";
+      } else {
+        text = "Ono što se ponavlja često nije slučajno, već obrazac koji još nije potpuno jasno sagledan. Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da postoji deo iskustva koji traži dublje razumevanje. Ovaj kratki prikaz može pokazati pravac, ali ne i celu sliku.<br><br>Za precizniji lični uvid kroz svoj ciklus, otvori detaljan prikaz.";
+      }
 
-<script>
-function show() {
-
-document.getElementById("result").innerHTML =
-"Ono što se ponavlja često nije slučajno, već obrazac koji još nije jasno sagledan.<br><br>" +
-"<a href='https://www.unlocktheessence.com/licni-uvid'>Otvori dublji lični uvid</a>";
-
-}
-</script>
-
+      result.innerHTML = text + "<br><a class='cta' href='https://www.unlocktheessence.com/licni-uvid' target='_blank'>Otvori dublji lični uvid</a>";
+      result.style.display = "block";
+    }
+  </script>
 </body>
 </html>
