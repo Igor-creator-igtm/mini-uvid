@@ -134,13 +134,13 @@
     <div class="card">
       <h1>Kratak uvid</h1>
       <p class="intro">
-        Napiši jednom rečenicom šta ti se trenutno ponavlja.
-        Ovo je samo početni pogled, dovoljno da osetiš pravac.
+        Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja.
+Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
       </p>
 
-      <textarea id="q" placeholder="Na primer: imam osećaj da mi se stalno vraćaju slične situacije i da ne uspevam da izađem iz istog kruga"></textarea>
+      <textarea id="q" placeholder="Na primer: imam osećaj da se stalno vraćam u iste situacije i ne znam zašto"></textarea>
 
-      <button onclick="showInsight()">Prikaži kratak uvid</button>
+      <button onclick="showInsight()">Pogledaj početni uvid</button>
 
       <div class="result" id="result"></div>
     </div>
@@ -154,9 +154,10 @@
       let text = "";
 
       if (value.length < 5) {
-        text = "Ponekad je dovoljno da zastaneš i napišeš jednu jednostavnu rečenicu o onome što se ponavlja. Tek tada obrazac počinje da se vidi jasnije.";
+        text = "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan. Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa i da iskustvo pokušava da se razume na dubljem nivou.";
       } else {
-        text = "Ono što se ponavlja često nije slučajno, već obrazac koji još nije potpuno jasno sagledan. Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da postoji deo iskustva koji traži dublje razumevanje. Ovaj kratki prikaz može pokazati pravac, ali ne i celu sliku.<br><br>Za precizniji lični uvid kroz svoj ciklus, otvori detaljan prikaz.";
+        text = "Kratak uvid može pokazati pravac, ali ne može dati celu sliku.
+Za precizniji prikaz potrebno je sagledati lični kod, trenutni period i fazu kroz koju prolaziš.";
       }
 
       result.innerHTML = text + "<br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
