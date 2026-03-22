@@ -100,6 +100,7 @@
       color: #3a342f;
       display: none;
       max-height: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     }
 
     .cta {
@@ -171,7 +172,10 @@ Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
 
 }
 
-      result.innerHTML = text + "<br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
+      result.innerHTML =
+"<b>Početni uvid</b><br><br>" +
+text +
+"<br><br><a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>";
       result.style.display = "block";
     }
   </script>
