@@ -188,6 +188,11 @@ function showInsight() {
     "Na osnovu onoga što si napisao, vidi se da se iskustvo oko \"" +
     inputRaw +
     "\" ne pojavljuje bez razloga.<br><br>";
+  let specific = "";
+
+if (input.includes("posao")) {
+  specific = "Kada se ista greška ponavlja u poslovnom okruženju, to često nije samo stvar trenutne pažnje, već način na koji se pritisak i očekivanja iznutra obrađuju.<br><br>";
+}
 
   const themes = {
     posao: [
@@ -279,11 +284,12 @@ function showInsight() {
   result.innerHTML =
     "<b>Početni uvid</b><br><br>" +
     intro +
+    specific +
     selectedText +
     "<br><br>" +
-"Ono što se ovde vidi je samo početak obrasca koji se trenutno pokreće. " +
-"Kada se sagleda ceo ciklus, postaje jasnije zašto se ovo ponavlja i u kom pravcu se zapravo kreće." +
-"Za dublji lični uvid potrebno je sagledati ceo tok kroz lični pisani uvid. " +
+"Ono što se ovde vidi je samo početak obrasca koji se trenutno pokreće.<br><br>" +
+"Kada se sagleda ceo ciklus, postaje jasnije zašto se ovo ponavlja i u kom pravcu se zapravo kreće.<br><br>" +
+"Za dublji lični uvid potrebno je sagledati ceo tok kroz lični pisani uvid." +
 "<br><br>" +
 "<a class='cta' href='https://uvid.unlocktheessence.com/' target='_blank'>Otvori dublji lični uvid</a>" +
 "<div class='aftercta'>Pisani lični dokument • radi se samo za tebe • bez plaćanja unapred</div>";
