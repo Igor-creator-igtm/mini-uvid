@@ -296,19 +296,38 @@
       const detectedTheme = detectTheme(input);
       const selectedText = pickRandom(texts[detectedTheme]);
 
-      result.innerHTML =
-        "<b>Početni uvid</b><br><br>" +
-        intro +
-        specific +
-        selectedText +
-        "<br><br>" +
-        "Ono što se ovde vidi je samo početak obrasca koji se trenutno pokreće.<br><br>" +
-        "Kada se sagleda ceo ciklus, postaje jasnije zašto se ovo ponavlja i u kom pravcu se zapravo kreće.<br><br>" +
-        "Ako želiš, možeš ovde stati.<br>" +
-        "Ponekad je dovoljno da se obrazac samo vidi jasnije.<br><br>" +
-        "Ako želiš da nastaviš dalje, možeš otvoriti kratak pregled i videti gde se trenutno nalaziš u tom toku.<br><br>" +
-        "<a class='cta' href='https://zahtev.unlocktheessence.com/' target='_blank'>Otvori kratak pregled</a>" +
-        "<div class='aftercta'>Kratki lični tekst • prvi uvid u trenutni period • bez obaveze</div>";
+      let nextStepText = "";
+let nextStepLink = "";
+let nextStepLabel = "";
+let nextStepNote = "";
+
+if (["posao", "odnos", "novac", "ponavljanje"].includes(detectedTheme)) {
+  nextStepText =
+    "Ako želiš da nastaviš dalje, možeš otvoriti lični uvid i sagledati širi obrazac kroz koji se ovo ponavlja.<br><br>";
+  nextStepLink = "https://uvid.unlocktheessence.com/";
+  nextStepLabel = "Otvori lični uvid";
+  nextStepNote = "Pisani lični dokument • dublji uvid u obrazac • bez plaćanja unapred";
+} else {
+  nextStepText =
+    "Ako želiš da nastaviš dalje, možeš otvoriti kratak pregled i videti gde se trenutno nalaziš u tom toku.<br><br>";
+  nextStepLink = "https://zahtev.unlocktheessence.com/";
+  nextStepLabel = "Otvori kratak pregled";
+  nextStepNote = "Kratki lični tekst • prvi uvid u trenutni period • bez obaveze";
+}
+
+result.innerHTML =
+  "<b>Početni uvid</b><br><br>" +
+  intro +
+  specific +
+  selectedText +
+  "<br><br>" +
+  "Ono što se ovde vidi je samo početak obrasca koji se trenutno pokreće.<br><br>" +
+  "Kada se sagleda ceo ciklus, postaje jasnije zašto se ovo ponavlja i u kom pravcu se zapravo kreće.<br><br>" +
+  "Ako želiš, možeš ovde stati.<br>" +
+  "Ponekad je dovoljno da se obrazac samo vidi jasnije.<br><br>" +
+  nextStepText +
+  "<a class='cta' href='" + nextStepLink + "' target='_blank'>" + nextStepLabel + "</a>" +
+  "<div class='aftercta'>" + nextStepNote + "</div>";
 
       result.style.display = "block";
     }
