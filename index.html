@@ -302,8 +302,8 @@ let nextStepLabel = "";
 let nextStepNote = "";
 
 if (["posao", "odnos", "novac", "ponavljanje"].includes(detectedTheme)) {
-  nextStepText =
-    "Ako želiš da nastaviš dalje, možeš otvoriti lični uvid i sagledati širi obrazac kroz koji se ovo ponavlja.<br><br>";
+ nextStepText =
+  "Ako želiš da nastaviš dalje, možeš otvoriti lični uvid i jasnije videti obrazac kroz koji se ovo ponavlja.<br><br>";
   nextStepLink = "https://uvid.unlocktheessence.com/";
   nextStepLabel = "Otvori lični uvid";
   nextStepNote = "Pisani lični dokument • dublji uvid u obrazac • bez plaćanja unapred";
@@ -312,7 +312,7 @@ if (["posao", "odnos", "novac", "ponavljanje"].includes(detectedTheme)) {
     "Ako želiš da nastaviš dalje, možeš otvoriti kratak pregled i videti gde se trenutno nalaziš u tom toku.<br><br>";
   nextStepLink = "https://zahtev.unlocktheessence.com/";
   nextStepLabel = "Otvori kratak pregled";
-  nextStepNote = "Kratki lični tekst • prvi uvid u trenutni period • bez obaveze";
+  nextStepNote = "Kratki lični tekst • prvi uvid u trenutni period • bez plaćanja unapred";
 }
 
 result.innerHTML =
@@ -326,6 +326,10 @@ result.innerHTML =
   "Ako želiš, možeš ovde stati.<br>" +
   "Ponekad je dovoljno da se obrazac samo vidi jasnije.<br><br>" +
   nextStepText +
+
+  "Ne moraš odmah da odlučiš.<br>" +
+  "Dovoljno je da vidiš da li želiš da ideš korak dalje.<br><br>" +
+
   "<a class='cta' href='" + nextStepLink + "' target='_blank'>" + nextStepLabel + "</a>" +
   "<div class='aftercta'>" + nextStepNote + "</div>";
 
