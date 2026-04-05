@@ -170,7 +170,7 @@
         Ljudi često napišu ono što ih već dugo prati, ali još nema jasan oblik.
       </p>
 
-      <button onclick="showInsight()">Pogledaj početni uvid</button>
+      <button onclick="showInsight()">Pogledaj svoj početni uvid</button>
 
       <p class="note">
         Dobićeš kratak početni uvid koji može pokazati obrazac koji se možda ponavlja.
@@ -187,11 +187,13 @@
       const inputRaw = document.getElementById("q").value.trim();
       const result = document.getElementById("result");
 
-      if (inputRaw.length < 3) {
+      result.style.display = "block";
+      result.innerHTML = "Otvaram početni uvid...";
+
+      if (inputRaw.length < 10) {
         result.innerHTML =
           "<b>Početni uvid</b><br><br>" +
           "Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao jasnije da se otvori.";
-        result.style.display = "block";
         return;
       }
 
@@ -330,8 +332,6 @@
         "Dovoljno je da vidiš da li želiš da ideš korak dalje.<br><br>" +
         "<a class='cta' href='" + nextStepLink + "' target='_blank'>" + nextStepLabel + "</a>" +
         "<div class='aftercta'>" + nextStepNote + "</div>";
-
-      result.style.display = "block";
     }
   </script>
 </body>
