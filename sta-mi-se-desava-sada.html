@@ -4,154 +4,70 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Šta mi se dešava sada | Unlock the Essence</title>
+  <title>Ne znam šta mi se dešava | Unlock the Essence</title>
   <meta
     name="description"
-    content="Kratak prostor u kojem možeš da napišeš šta ti se dešava i sagledaš obrazac koji se pojavljuje."
+    content="Ako imaš osećaj da ne znaš šta ti se dešava, ovde možeš da kreneš od pitanja koje ti je trenutno najbliže i sagledaš svoj trenutak jasnije."
   />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f1ea;
-      color: #2f2a26;
-    }
-
-    .wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 28px;
-      line-height: 1.3;
-      margin-bottom: 12px;
-    }
-
-    p {
-      line-height: 1.7;
-      color: #5a5148;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 120px;
-      border-radius: 12px;
-      border: 1px solid #d8cdbf;
-      padding: 14px;
-      font-size: 16px;
-      margin-top: 16px;
-    }
-
-    button {
-      margin-top: 14px;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 10px;
-      background: #7a5c43;
-      color: white;
-      cursor: pointer;
-    }
-
-    .result {
-      margin-top: 24px;
-      background: #fffdf9;
-      padding: 18px;
-      border-radius: 12px;
-      border: 1px solid #e6dbce;
-      display: none;
-      line-height: 1.7;
-    }
-
-    .links {
-      margin-top: 28px;
-      font-size: 15px;
-    }
-
-    .links a {
-      display: block;
-      margin-top: 10px;
-      color: #7a5c43;
-      text-decoration: none;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-
-    .footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #8a7f72;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="wrap">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand-link" href="https://www.unlocktheessence.com">Unlock the Essence</a>
+    </header>
 
-    <h1>Šta ti se dešava sada</h1>
+    <main class="page-card">
+      <h1>Ne znam šta mi se dešava</h1>
 
-    <p>
-      Nekad postoji osećaj da se nešto dešava,
-      ali bez jasnog objašnjenja.
-    </p>
+      <p class="intro">
+        Nekad ne postoji jedan jasan problem, ali postoji osećaj da nešto više nije isto kao pre.
+      </p>
 
-    <p>
-      Ne moraš da znaš šta je.
-      Dovoljno je da napišeš ono što se već ponavlja.
-    </p>
+      <p>
+        Možda ne možeš tačno da objasniš šta se menja, ali osećaš da ti je potreban mirniji pogled na ono što se trenutno dešava.
+      </p>
 
-    <textarea id="q" placeholder="Napiši jednom rečenicom šta ti se dešava..."></textarea>
+      <p>
+        Ovde ne moraš da znaš odakle tačno da kreneš. Dovoljno je da izabereš pitanje koje ti je sada najbliže.
+      </p>
 
-    <button onclick="showInsight()">Pogledaj svoj početni uvid</button>
+      <section class="entry-group">
+        <h2>Ako pokušavaš da razumeš svoj trenutak</h2>
+        <ul class="entry-list">
+          <li><a href="https://kako.unlocktheessence.com/sta-mi-se-desava-u-zivotu-trenutno.html">Šta mi se dešava u životu trenutno</a></li>
+          <li><a href="https://kako.unlocktheessence.com/zasto-se-ovako-osecam-ovih-dana.html">Zašto se ovako osećam ovih dana</a></li>
+          <li><a href="https://kako.unlocktheessence.com/kako-da-razumem-sta-mi-se-desava.html">Kako da razumem šta mi se dešava</a></li>
+        </ul>
+      </section>
 
-    <div id="result" class="result"></div>
+      <section class="entry-group">
+        <h2>Ako osećaš da se nešto dublje ponavlja</h2>
+        <ul class="entry-list">
+          <li><a href="https://zasto.unlocktheessence.com/zasto-se-stalno-vracam-na-isto.html">Zašto se stalno vraćam na isto</a></li>
+          <li><a href="https://zasto.unlocktheessence.com/zasto-ne-mogu-da-pokrenem-stvari.html">Zašto ne mogu da pokrenem stvari</a></li>
+        </ul>
+      </section>
 
-    <!-- NAVIGACIJA POSLE -->
+      <section class="closing-note">
+        <p>
+          Ako ne želiš da biraš između više puteva, možeš početi i od kratkog početnog uvida.
+        </p>
 
-    <div class="links">
-      <p>Ako želiš da sagledaš ovo iz drugog ugla:</p>
+        <p>
+          Ponekad je dovoljno da napišeš jednu rečenicu o onome što ti se ponavlja, da bi obrazac počeo da se vidi jasnije.
+        </p>
 
-      <a href="https://kako.unlocktheessence.com/">
-        Kako da razumem šta mi se dešava
-      </a>
+        <p>
+          <a href="https://trenutak.unlocktheessence.com">Pogledaj početni uvid</a>
+        </p>
+      </section>
+    </main>
 
-      <a href="https://zasto.unlocktheessence.com/">
-        Zašto se ovo ponavlja
-      </a>
-    </div>
-
-    <div class="footer">
-      <a href="https://www.unlocktheessence.com/">Unlock the Essence</a>
-    </div>
-
+    <footer class="site-footer">
+      <a href="https://www.unlocktheessence.com">Nazad na Unlock the Essence</a>
+    </footer>
   </div>
-
-  <script>
-    function showInsight() {
-      const input = document.getElementById("q").value.trim();
-      const result = document.getElementById("result");
-
-      result.style.display = "block";
-      result.innerHTML = "Otvaram početni uvid...";
-
-      if (input.length < 10) {
-        result.innerHTML =
-          "Napiši malo jasnije šta ti se ponavlja, da bi obrazac mogao da se vidi.";
-        return;
-      }
-
-      result.innerHTML =
-        "<b>Početni uvid</b><br><br>" +
-        "U onome što si napisao vidi se obrazac koji se ne pojavljuje slučajno.<br><br>" +
-        "Ono što se ponavlja često nije greška, već deo toka koji još nije potpuno sagledan.<br><br>" +
-        "Ako želiš da vidiš širu sliku i razumeš gde se ovo kreće dalje, možeš nastaviti ovde:<br><br>" +
-        "<a href='https://zahtev.unlocktheessence.com/'>Zatraži kratak uvid</a>";
-    }
-  </script>
-
 </body>
 </html>
