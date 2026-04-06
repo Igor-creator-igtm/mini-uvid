@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Šta mi se dešava sada | Unlock the Essence</title>
+  <meta
+    name="description"
+    content="Kratak prostor u kojem možeš da napišeš šta ti se dešava i sagledaš obrazac koji se pojavljuje."
+  />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f1ea;
+      color: #2f2a26;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    p {
+      line-height: 1.7;
+      color: #5a5148;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      border-radius: 12px;
+      border: 1px solid #d8cdbf;
+      padding: 14px;
+      font-size: 16px;
+      margin-top: 16px;
+    }
+
+    button {
+      margin-top: 14px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #7a5c43;
+      color: white;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 24px;
+      background: #fffdf9;
+      padding: 18px;
+      border-radius: 12px;
+      border: 1px solid #e6dbce;
+      display: none;
+      line-height: 1.7;
+    }
+
+    .links {
+      margin-top: 28px;
+      font-size: 15px;
+    }
+
+    .links a {
+      display: block;
+      margin-top: 10px;
+      color: #7a5c43;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #8a7f72;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <h1>Šta ti se dešava sada</h1>
+
+    <p>
+      Nekad postoji osećaj da se nešto dešava,
+      ali bez jasnog objašnjenja.
+    </p>
+
+    <p>
+      Ne moraš da znaš šta je.
+      Dovoljno je da napišeš ono što se već ponavlja.
+    </p>
+
+    <textarea id="q" placeholder="Napiši jednom rečenicom šta ti se dešava..."></textarea>
+
+    <button onclick="showInsight()">Pogledaj svoj početni uvid</button>
+
+    <div id="result" class="result"></div>
+
+    <!-- NAVIGACIJA POSLE -->
+
+    <div class="links">
+      <p>Ako želiš da sagledaš ovo iz drugog ugla:</p>
+
+      <a href="https://kako.unlocktheessence.com/">
+        Kako da razumem šta mi se dešava
+      </a>
+
+      <a href="https://zasto.unlocktheessence.com/">
+        Zašto se ovo ponavlja
+      </a>
+    </div>
+
+    <div class="footer">
+      <a href="https://www.unlocktheessence.com/">Unlock the Essence</a>
+    </div>
+
+  </div>
+
+  <script>
+    function showInsight() {
+      const input = document.getElementById("q").value.trim();
+      const result = document.getElementById("result");
+
+      result.style.display = "block";
+      result.innerHTML = "Otvaram početni uvid...";
+
+      if (input.length < 10) {
+        result.innerHTML =
+          "Napiši malo jasnije šta ti se ponavlja, da bi obrazac mogao da se vidi.";
+        return;
+      }
+
+      result.innerHTML =
+        "<b>Početni uvid</b><br><br>" +
+        "U onome što si napisao vidi se obrazac koji se ne pojavljuje slučajno.<br><br>" +
+        "Ono što se ponavlja često nije greška, već deo toka koji još nije potpuno sagledan.<br><br>" +
+        "Ako želiš da vidiš širu sliku i razumeš gde se ovo kreće dalje, možeš nastaviti ovde:<br><br>" +
+        "<a href='https://zahtev.unlocktheessence.com/'>Zatraži kratak uvid</a>";
+    }
+  </script>
+
+</body>
+</html>
