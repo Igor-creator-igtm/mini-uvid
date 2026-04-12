@@ -174,18 +174,6 @@
       background: #684d38;
     }
 
-    .secondary-link {
-      display: inline-block;
-      margin-top: 14px;
-      color: #7a5c43;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .secondary-link:hover {
-      text-decoration: underline;
-    }
-
     .aftercta {
       margin-top: 10px;
       font-size: 13px;
@@ -302,7 +290,9 @@
           "povukao", "povukla", "povlaci", "povlači",
           "ne moze da me saslusa", "ne može da me sasluša",
           "ne slusa", "ne sluša",
-          "svadja", "svađa", "rasprava", "rasprave"
+          "svadja", "svađa", "rasprava", "rasprave",
+          "pricam devojci", "pričam devojci",
+          "vracamo se na isto", "vraćamo se na isto"
         ],
         novac: [
           "novac", "pare", "dug", "dugovi", "finansije", "finansijski",
@@ -316,7 +306,7 @@
         ponavljanje: [
           "stalno", "ponavlja", "ponavljanje", "uvek", "uvijek",
           "isti problem", "iste situacije", "isti krug", "opet isto",
-          "vracamo se na isto", "vraćamo se na isto", "vraca se isto", "vraća se isto"
+          "vraca se isto", "vraća se isto"
         ],
         zastoj: [
           "zastoj", "stojim u mestu", "stojim u mjestu", "blokada",
@@ -427,19 +417,16 @@
         ]
       };
 
-      const detectedTheme = detectTheme(input, themes);
+      const detectedTheme = detectThemeByScore(input, themes);
       const selectedText = pickRandom(texts[detectedTheme]);
 
-      let recommendedLink = "";
+      let nextStepLink = "https://uvid.unlocktheessence.com/#zahtev";
+      let nextStepLabel = "Zatraži kratki uvid";
+      let nextStepNote = "Kratak pisani uvid • prvi jasniji pogled • bez plaćanja unapred";
+      let nextStepIntro = "Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.";
+
       if (detectedTheme === "odnos") {
-        recommendedLink = `
-          <a class="secondary-link" href="https://odnosi.unlocktheessence.com/" target="_blank" rel="noopener noreferrer">
-            Pogledaj i stranicu za odnose
-          </a>
-          <div class="aftercta">
-            Ako želiš da ovaj obrazac prvo sagledaš kroz relacijski sloj, ovde možeš ući tim putem.
-          </div>
-        `;
+        nextStepIntro = "Ako želiš da ovaj obrazac sagledaš malo jasnije, možeš nastaviti dalje kroz kratki uvid.";
       }
 
       result.innerHTML = `
@@ -455,18 +442,16 @@
 
           <div class="next-step">
             <div class="doc-body">
-              <p>Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.</p>
+              <p>${nextStepIntro}</p>
             </div>
 
-            <a class="cta" href="https://uvid.unlocktheessence.com/#zahtev" target="_blank" rel="noopener noreferrer">
-              Zatraži kratki uvid
+            <a class="cta" href="${nextStepLink}" target="_blank" rel="noopener noreferrer">
+              ${nextStepLabel}
             </a>
 
             <div class="aftercta">
-              Kratak pisani uvid • prvi jasniji pogled • bez plaćanja unapred
+              ${nextStepNote}
             </div>
-
-            ${recommendedLink}
           </div>
         </div>
       `;
@@ -482,24 +467,44 @@
         .replace(/ž/g, "z");
     }
 
-    function detectTheme(text, themes) {
-      const priorityOrder = ["odnos", "posao", "novac", "umor", "zastoj", "nejasnoca", "ponavljanje"];
+    function detectThemeByScore(text, themes) {
+      const scores = {
+        odnos: 0,
+        posao: 0,
+        novac: 0,
+        umor: 0,
+        zastoj: 0,
+        nejasnoca: 0,
+        ponavljanje: 0
+      };
 
-      for (const theme of priorityOrder) {
-        for (const keyword of themes[theme]) {
+      for (const [theme, keywords] of Object.entries(themes)) {
+        for (const keyword of keywords) {
           const normalizedKeyword = normalizeText(keyword);
 
           if (text.includes(normalizedKeyword)) {
-            return theme;
-          }
-
-          if (normalizedKeyword.length >= 5 && text.includes(normalizedKeyword.slice(0, 5))) {
-            return theme;
+            scores[theme] += normalizedKeyword.length > 8 ? 3 : 2;
+          } else if (normalizedKeyword.length >= 5 && text.includes(normalizedKeyword.slice(0, 5))) {
+            scores[theme] += 1;
           }
         }
       }
 
-      return "opsti";
+      if (scores.odnos > 0) {
+        scores.odnos += 3;
+      }
+
+      let bestTheme = "opsti";
+      let bestScore = 0;
+
+      for (const [theme, score] of Object.entries(scores)) {
+        if (score > bestScore) {
+          bestScore = score;
+          bestTheme = theme;
+        }
+      }
+
+      return bestTheme;
     }
 
     function pickRandom(arr) {
