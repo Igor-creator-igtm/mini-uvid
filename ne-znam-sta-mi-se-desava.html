@@ -1,102 +1,164 @@
 <!DOCTYPE html>
 <html lang="sr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ne znam šta mi se dešava | Unlock the Essence</title>
-  <meta
-    name="description"
-    content="Ako imaš osećaj da ne znaš šta ti se dešava, ovde možeš krenuti od pitanja koje ti je trenutno najbliže i sagledati svoj trenutak jasnije."
-  />
+  <meta name="description" content="Ako imaš osećaj da ne znaš šta ti se dešava, možda se ne radi o jednom problemu, već o stanju koje još nema jasan oblik.">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7f5f1;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    .site-shell {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .page-card {
+      background: #ffffff;
+      padding: 40px 32px;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: normal;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+
+    .content p {
+      margin-bottom: 16px;
+    }
+
+    .pause-block {
+      margin-top: 32px;
+      padding: 20px 18px;
+      border-left: 2px solid #e5e0d8;
+      background: #faf8f4;
+    }
+
+    .pause-block p {
+      margin-bottom: 12px;
+    }
+
+    .transition-block {
+      margin-top: 32px;
+    }
+
+    .transition-block p {
+      margin-bottom: 14px;
+    }
+
+    .next-step-links {
+      margin-top: 18px;
+    }
+
+    .next-step-links a {
+      display: inline-block;
+      text-decoration: none;
+      color: #222;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 2px;
+      transition: 0.2s ease;
+    }
+
+    .next-step-links a:hover {
+      border-bottom: 1px solid #222;
+    }
+
+    .site-footer {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .site-footer a {
+      text-decoration: none;
+      color: #888;
+      font-size: 14px;
+    }
+
+    .site-footer a:hover {
+      color: #222;
+    }
+
+    @media (max-width: 640px) {
+      .site-shell {
+        padding: 24px 16px 40px;
+      }
+
+      .page-card {
+        padding: 28px 22px;
+        border-radius: 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
 </head>
-
 <body>
   <div class="site-shell">
 
-    <header class="site-header">
-      <a class="brand-link" href="https://www.unlocktheessence.com">Unlock the Essence</a>
-    </header>
-
     <main class="page-card">
-
       <h1>Ne znam šta mi se dešava</h1>
 
-      <p class="intro">
-        Nekad ne postoji jedan jasan problem,
-        ali postoji osećaj da nešto više nije isto kao pre.
-      </p>
-
-      <p>
-        Ne moraš da znaš odakle da kreneš.
-        Možeš krenuti od onoga što ti je sada najbliže.
-      </p>
-
-      <section class="entry-group">
-        <h2>Ako želiš da razumeš svoj trenutak</h2>
-
-        <ul class="entry-list">
-          <li>
-            <a href="https://kako.unlocktheessence.com/sta-mi-se-desava-u-zivotu-trenutno.html">
-              <strong>Šta mi se dešava u životu trenutno</strong>
-              <span>Kada osećaš promenu, ali još ne vidiš pravac.</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://kako.unlocktheessence.com/zasto-se-ovako-osecam-ovih-dana.html">
-              <strong>Zašto se ovako osećam ovih dana</strong>
-              <span>Kada osećaj postoji, ali objašnjenje nije jasno.</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://kako.unlocktheessence.com/kako-da-razumem-sta-mi-se-desava.html">
-              <strong>Kako da razumem šta mi se dešava</strong>
-              <span>Kada pokušavaš da povežeš ono što osećaš.</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="entry-group">
-        <h2>Ako osećaš da se nešto ponavlja</h2>
-
-        <ul class="entry-list">
-          <li>
-            <a href="https://zasto.unlocktheessence.com/zasto-se-stalno-vracam-na-isto.html">
-              <strong>Zašto se stalno vraćam na isto</strong>
-              <span>Kada se isti obrazac vraća kroz različite situacije.</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://zasto.unlocktheessence.com/zasto-ne-mogu-da-pokrenem-stvari.html">
-              <strong>Zašto ne mogu da pokrenem stvari</strong>
-              <span>Kada postoji želja, ali pomak izostaje.</span>
-            </a>
-          </li>
-        </ul>
-      </section>
-
-      <section class="closing-note">
-
+      <div class="content">
         <p>
-          Ako ne želiš da biraš,
-          možeš krenuti direktno od jednog početnog uvida.
+          Nekad ne postoji jedan jasan problem,
+          ali postoji osećaj da nešto više nije isto kao pre.
         </p>
 
         <p>
-          Jedna rečenica je dovoljna
-          da se obrazac počne videti jasnije.
+          Možda spolja sve deluje poznato,
+          ali iznutra kao da više ne znaš gde se tačno nalaziš.
         </p>
 
-        <a class="cta-link" href="https://trenutak.unlocktheessence.com">
-          Pokreni početni uvid
-        </a>
+        <p>
+          U takvim trenucima,
+          nije uvek moguće odmah objasniti šta nije u redu.
+          Ponekad samo osećaš da nešto u tebi traži drugačiji pogled.
+        </p>
+      </div>
 
+      <section class="pause-block">
+        <p>
+          Zastani na trenutak i primeti
+          da li ovde više osećaš zbunjenost,
+          umor,
+          ili osećaj da si se udaljio od sopstvenog ritma.
+        </p>
+
+        <p>
+          Ne moraš sada da znaš odgovor.
+          Dovoljno je da prepoznaš da se nešto u tebi već pomera.
+        </p>
+      </section>
+
+      <section class="transition-block">
+        <p>
+          Ako si stigao dovde,
+          moguće je da ovo nije samo prolazan osećaj,
+          već obrazac koji još nije dobio jasan oblik.
+        </p>
+
+        <p>
+          Ponekad je dovoljno da se to jasnije sagleda.
+        </p>
+
+        <div class="next-step-links">
+          <a href="https://trenutak.unlocktheessence.com/">Pogledaj početni uvid</a>
+        </div>
       </section>
 
     </main>
