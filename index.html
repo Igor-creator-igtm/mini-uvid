@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Početni uvid</title>
+  <title>Početni uvid | Unlock the Essence</title>
+  <meta
+    name="description"
+    content="Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja i dobij početni uvid u obrazac koji se sada možda otvara."
+  />
   <style>
     * {
       box-sizing: border-box;
@@ -32,7 +36,7 @@
       border: 1px solid #e8dfd2;
       border-radius: 18px;
       padding: 32px 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       text-align: center;
       margin-top: 40px;
       margin-bottom: 40px;
@@ -115,7 +119,7 @@
       border: 1px solid #e6dbce;
       border-radius: 16px;
       padding: 24px 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
     }
 
     .doc-label {
@@ -172,7 +176,7 @@
 
     .secondary-link {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 14px;
       color: #7a5c43;
       font-weight: 600;
       text-decoration: none;
@@ -227,7 +231,10 @@
         Ponekad je dovoljno da se obrazac napiše, da bi počeo da se vidi jasnije.
       </p>
 
-      <textarea id="q" placeholder="Na primer: imam osećaj da se stalno vraćam u iste situacije i ne znam zašto"></textarea>
+      <textarea
+        id="q"
+        placeholder="Na primer: imam osećaj da se stalno vraćam u iste situacije i ne znam zašto"
+      ></textarea>
 
       <p class="helper">
         Ljudi često napišu ono što ih već dugo prati, ali još nema jasan oblik.
@@ -264,22 +271,43 @@
         return;
       }
 
-      const input = inputRaw.toLowerCase();
+      const input = normalizeText(inputRaw);
 
       const themes = {
         posao: [
           "problem na poslu", "problemi na poslu", "posao", "rad", "firma",
-          "sef", "šef", "kolege", "kolega", "karijera", "radno mesto", "otkaz"
+          "sef", "sefa", "sefu", "kolege", "kolega", "kolegom", "karijera",
+          "radno mesto", "radnom mestu", "otkaz", "poslovno", "poslovni"
         ],
         odnos: [
-          "veza", "odnos", "partner", "partnerka", "partnerom", "partnerkom",
-          "brak", "ljubav", "devojka", "djevojka", "momak", "suprug", "supruga",
-          "porodica", "roditelji", "prijatelj", "prijatelji", "ignoriše", "udaljio",
-          "udaljila", "hladan", "hladna", "distanca", "povukao", "povukla"
+          "veza", "vezi", "vezu",
+          "odnos", "odnosu", "odnosa",
+          "partner", "partnera", "partneru", "partnerom",
+          "partnerka", "partnerke", "partnerki", "partnerkom",
+          "brak", "braku",
+          "ljubav", "ljubavi",
+          "devojka", "devojke", "devojci", "devojkom",
+          "djevojka", "djevojke", "djevojci", "djevojkom",
+          "momak", "momka", "momku", "momkom",
+          "suprug", "supruga", "suprugu", "suprugom",
+          "supruga", "supruge", "supruzi",
+          "porodica", "porodici",
+          "roditelji", "roditelja",
+          "prijatelj", "prijatelja", "prijatelju", "prijateljem",
+          "prijatelji", "prijateljima",
+          "ignoriše", "ignorise",
+          "udaljio", "udaljila", "udaljili", "udaljava", "udaljavanje",
+          "hladan", "hladna", "hladno",
+          "distanca", "distance",
+          "povukao", "povukla", "povlaci", "povlači",
+          "ne moze da me saslusa", "ne može da me sasluša",
+          "ne slusa", "ne sluša",
+          "svadja", "svađa", "rasprava", "rasprave"
         ],
         novac: [
           "novac", "pare", "dug", "dugovi", "finansije", "finansijski",
-          "plata", "zarada", "trosak", "trošak", "racuni", "računi"
+          "plata", "zarada", "trosak", "trošak", "troskovi", "troškovi",
+          "racuni", "računi"
         ],
         umor: [
           "umor", "umoran", "umorna", "iscrpljen", "iscrpljena",
@@ -287,7 +315,8 @@
         ],
         ponavljanje: [
           "stalno", "ponavlja", "ponavljanje", "uvek", "uvijek",
-          "isti problem", "iste situacije", "isti krug", "opet isto"
+          "isti problem", "iste situacije", "isti krug", "opet isto",
+          "vracamo se na isto", "vraćamo se na isto", "vraca se isto", "vraća se isto"
         ],
         zastoj: [
           "zastoj", "stojim u mestu", "stojim u mjestu", "blokada",
@@ -302,7 +331,7 @@
       const texts = {
         posao: [
           [
-            "Iz onoga što si napisao vidi se da se iskustvo oko \"" + inputRaw + "\" ne pojavljuje slučajno.",
+            `Iz onoga što si napisao vidi se da se iskustvo oko "${escapeHtml(inputRaw)}" ne pojavljuje slučajno.`,
             "Kada se slične situacije vraćaju kroz posao i svakodnevne obaveze, često se ne ponavlja samo spoljašnji problem, već i isti unutrašnji pritisak.",
             "Ono što je sada vidljivo može biti prvi trag obrasca koji traži da bude sagledan mirnije i jasnije."
           ],
@@ -314,19 +343,19 @@
         ],
         odnos: [
           [
-            "Iz onoga što si napisao vidi se da se kroz odnos ponavlja nešto što još nije do kraja razjašnjeno.",
-            "Kada se sličan osećaj vraća kroz bliskost sa drugima, to često pokazuje da isti obrazac ostaje aktivan između vas.",
+            `Iz onoga što si napisao vidi se da se kroz odnos oko "${escapeHtml(inputRaw)}" ponavlja nešto što još nije do kraja razjašnjeno.`,
+            "Kada se isti razgovor, napetost ili pokušaj približavanja vraća na isto mesto, obično se ne radi samo o jednoj situaciji, već o obrascu koji ostaje aktivan između vas.",
             "Ono što je sada postalo vidljivo može biti prvi jasan trag tog ponavljanja."
           ],
           [
             "Ono što si napisao ne deluje kao izdvojena situacija.",
-            "Kada se slična napetost ili nejasnoća vraća kroz odnos, obično se ne radi samo o jednom trenutku, već o obrascu koji se ponavlja.",
+            "Kada se slična napetost ili nemogućnost da se nešto zaista čuje stalno vraća kroz odnos, to obično pokazuje da isti obrazac ostaje otvoren između vas.",
             "Početni uvid ovde služi da taj obrazac prvi put dobije jasniji oblik."
           ]
         ],
         novac: [
           [
-            "Iz onoga što si napisao vidi se da se iskustvo oko \"" + inputRaw + "\" vraća kroz isti ton pritiska.",
+            `Iz onoga što si napisao vidi se da se iskustvo oko "${escapeHtml(inputRaw)}" vraća kroz isti ton pritiska.`,
             "Kada se napetost ili manjak stalno otvaraju kroz novac, često se ne ponavlja samo situacija, već i isti osećaj nesigurnosti ili opterećenja.",
             "Ono što sada vidiš može biti prvi jasan pogled na obrazac koji se već neko vreme vraća."
           ],
@@ -398,30 +427,13 @@
         ]
       };
 
-      function detectTheme(text) {
-        const priorityOrder = ["odnos", "posao", "novac", "umor", "zastoj", "nejasnoca", "ponavljanje"];
-
-        for (const theme of priorityOrder) {
-          for (const keyword of themes[theme]) {
-            if (text.includes(keyword)) {
-              return theme;
-            }
-          }
-        }
-        return "opsti";
-      }
-
-      function pickRandom(arr) {
-        return arr[Math.floor(Math.random() * arr.length)];
-      }
-
-      const detectedTheme = detectTheme(input);
+      const detectedTheme = detectTheme(input, themes);
       const selectedText = pickRandom(texts[detectedTheme]);
 
       let recommendedLink = "";
       if (detectedTheme === "odnos") {
         recommendedLink = `
-          <a class="secondary-link" href="https://odnosi.unlocktheessence.com/" target="_blank">
+          <a class="secondary-link" href="https://odnosi.unlocktheessence.com/" target="_blank" rel="noopener noreferrer">
             Pogledaj i stranicu za odnose
           </a>
           <div class="aftercta">
@@ -446,7 +458,7 @@
               <p>Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.</p>
             </div>
 
-            <a class="cta" href="https://uvid.unlocktheessence.com/#zahtev" target="_blank">
+            <a class="cta" href="https://uvid.unlocktheessence.com/#zahtev" target="_blank" rel="noopener noreferrer">
               Zatraži kratki uvid
             </a>
 
@@ -458,6 +470,49 @@
           </div>
         </div>
       `;
+    }
+
+    function normalizeText(text) {
+      return text
+        .toLowerCase()
+        .replace(/š/g, "s")
+        .replace(/đ/g, "dj")
+        .replace(/č/g, "c")
+        .replace(/ć/g, "c")
+        .replace(/ž/g, "z");
+    }
+
+    function detectTheme(text, themes) {
+      const priorityOrder = ["odnos", "posao", "novac", "umor", "zastoj", "nejasnoca", "ponavljanje"];
+
+      for (const theme of priorityOrder) {
+        for (const keyword of themes[theme]) {
+          const normalizedKeyword = normalizeText(keyword);
+
+          if (text.includes(normalizedKeyword)) {
+            return theme;
+          }
+
+          if (normalizedKeyword.length >= 5 && text.includes(normalizedKeyword.slice(0, 5))) {
+            return theme;
+          }
+        }
+      }
+
+      return "opsti";
+    }
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
     }
   </script>
 </body>
