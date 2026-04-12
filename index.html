@@ -420,14 +420,17 @@
       const detectedTheme = detectThemeByScore(input, themes);
       const selectedText = pickRandom(texts[detectedTheme]);
 
-      let nextStepLink = "https://uvid.unlocktheessence.com/#zahtev";
+      let nextStepLink = "https://zahtev.unlocktheessence.com/";
       let nextStepLabel = "Zatraži kratki uvid";
       let nextStepNote = "Kratak pisani uvid • prvi jasniji pogled • bez plaćanja unapred";
       let nextStepIntro = "Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.";
 
       if (detectedTheme === "odnos") {
-        nextStepIntro = "Ako želiš da ovaj obrazac sagledaš malo jasnije, možeš nastaviti dalje kroz kratki uvid.";
-      }
+  nextStepLink = "https://odnosi.unlocktheessence.com/";
+  nextStepLabel = "Pogledaj stranicu za odnose";
+  nextStepNote = "Relacijski sloj • jasniji pogled na obrazac između vas";
+  nextStepIntro = "Ako želiš da ovaj obrazac prvo sagledaš kroz relacijski sloj, možeš nastaviti ovim putem.";
+}
 
       result.innerHTML = `
         <div class="insight-doc">
