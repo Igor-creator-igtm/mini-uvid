@@ -12,7 +12,7 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: Georgia, "Times New Roman", serif;
       background: #f5f1ea;
       color: #2f2a26;
     }
@@ -27,7 +27,7 @@
 
     .card {
       width: 100%;
-      max-width: 620px;
+      max-width: 680px;
       background: #fffdf9;
       border: 1px solid #e8dfd2;
       border-radius: 18px;
@@ -47,7 +47,7 @@
 
     .intro {
       margin: 0 auto 24px;
-      max-width: 500px;
+      max-width: 520px;
       font-size: 16px;
       line-height: 1.7;
       color: #5a5148;
@@ -65,6 +65,7 @@
       outline: none;
       background: #fff;
       color: #2f2a26;
+      font-family: inherit;
     }
 
     textarea:focus {
@@ -82,37 +83,18 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.2s ease;
+      font-family: inherit;
     }
 
     button:hover {
       background: #684d38;
     }
 
-    .result {
-      margin-top: 24px;
-      padding: 20px;
-      border-radius: 14px;
-      background: #f8f3ec;
-      border: 1px solid #e6dbce;
-      text-align: left;
-      line-height: 1.8;
-      font-size: 16px;
-      color: #3a342f;
-      display: none;
-      max-height: none;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-
-    .cta {
-      display: inline-block;
-      margin-top: 18px;
-      color: #7a5c43;
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    .cta:hover {
-      text-decoration: underline;
+    .helper {
+      font-size: 14px;
+      color: #7a6f63;
+      margin-top: 10px;
+      line-height: 1.6;
     }
 
     .note {
@@ -122,10 +104,89 @@
       line-height: 1.6;
     }
 
+    .result {
+      margin-top: 26px;
+      display: none;
+      text-align: left;
+    }
+
+    .insight-doc {
+      background: #f8f3ec;
+      border: 1px solid #e6dbce;
+      border-radius: 16px;
+      padding: 24px 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .doc-label {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a7f72;
+      margin-bottom: 10px;
+    }
+
+    .doc-title {
+      font-size: 24px;
+      line-height: 1.3;
+      color: #2f2a26;
+      margin: 0 0 18px;
+      font-weight: 600;
+    }
+
+    .doc-body {
+      font-size: 16px;
+      line-height: 1.85;
+      color: #3a342f;
+    }
+
+    .doc-body p {
+      margin: 0 0 16px;
+    }
+
+    .doc-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .next-step {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid #e0d5c8;
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      background: #7a5c43;
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .cta:hover {
+      background: #684d38;
+    }
+
+    .secondary-link {
+      display: inline-block;
+      margin-top: 12px;
+      color: #7a5c43;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .secondary-link:hover {
+      text-decoration: underline;
+    }
+
     .aftercta {
       margin-top: 10px;
       font-size: 13px;
       color: #8a7f72;
+      line-height: 1.6;
     }
 
     @media (max-width: 640px) {
@@ -139,17 +200,19 @@
 
       .intro,
       textarea,
-      .result,
-      button {
+      .note,
+      button,
+      .doc-body {
         font-size: 15px;
       }
 
-      .note {
-        font-size: 14px;
+      .doc-title {
+        font-size: 21px;
       }
 
-      .aftercta {
-        font-size: 13px;
+      .cta {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -166,7 +229,7 @@
 
       <textarea id="q" placeholder="Na primer: imam osećaj da se stalno vraćam u iste situacije i ne znam zašto"></textarea>
 
-      <p style="font-size:14px; color:#7a6f63; margin-top:10px;">
+      <p class="helper">
         Ljudi često napišu ono što ih već dugo prati, ali još nema jasan oblik.
       </p>
 
@@ -174,8 +237,7 @@
 
       <p class="note">
         Dobićeš kratak početni uvid koji može pokazati obrazac koji se možda ponavlja.
-        Ovaj prikaz je samo prvi korak i ne daje potpunu sliku ličnog ciklusa.
-        Za precizniji uvid potrebno je sagledati ceo tok kroz lični uvid.
+        Ovo je prvi korak ka jasnijem sagledavanju.
       </p>
 
       <div class="result" id="result"></div>
@@ -188,28 +250,21 @@
       const result = document.getElementById("result");
 
       result.style.display = "block";
-      result.innerHTML = "Otvaram početni uvid...";
 
       if (inputRaw.length < 10) {
-        result.innerHTML =
-          "<b>Početni uvid</b><br><br>" +
-          "Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao jasnije da se otvori.";
+        result.innerHTML = `
+          <div class="insight-doc">
+            <div class="doc-label">Početni uvid</div>
+            <h2 class="doc-title">Potrebna je jedna jasna rečenica</h2>
+            <div class="doc-body">
+              <p>Napiši jednom rečenicom šta ti se u poslednje vreme ponavlja, da bi početni uvid mogao jasnije da se otvori.</p>
+            </div>
+          </div>
+        `;
         return;
       }
 
       const input = inputRaw.toLowerCase();
-
-      const intro =
-        "Na osnovu onoga što si napisao, vidi se da se iskustvo oko \"" +
-        inputRaw +
-        "\" ne pojavljuje bez razloga.<br><br>";
-
-      let specific = "";
-
-      if (input.includes("posao")) {
-        specific =
-          "Kada se ista greška ponavlja u poslovnom okruženju, to često nije samo stvar trenutne pažnje, već način na koji se pritisak i očekivanja iznutra obrađuju.<br><br>";
-      }
 
       const themes = {
         posao: [
@@ -219,7 +274,8 @@
         odnos: [
           "veza", "odnos", "partner", "partnerka", "partnerom", "partnerkom",
           "brak", "ljubav", "devojka", "djevojka", "momak", "suprug", "supruga",
-          "porodica", "roditelji", "prijatelj", "prijatelji"
+          "porodica", "roditelji", "prijatelj", "prijatelji", "ignoriše", "udaljio",
+          "udaljila", "hladan", "hladna", "distanca", "povukao", "povukla"
         ],
         novac: [
           "novac", "pare", "dug", "dugovi", "finansije", "finansijski",
@@ -245,41 +301,105 @@
 
       const texts = {
         posao: [
-          "Kada se slični problemi vraćaju kroz rad i svakodnevne obaveze, to često pokazuje da se ne ponavlja samo spoljašnja situacija, već i unutrašnji obrazac odnosa prema pritisku, granicama i sopstvenoj vrednosti.<br><br>Takvi periodi obično traže da se šira slika sagleda mirnije, umesto da se reaguje samo na trenutni problem.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Kada se isti teret javlja u poslovnom prostoru, to često znači da iskustvo pokušava da skrene pažnju na obrazac koji još nije jasno viđen.<br><br>Ponekad se ne ponavlja samo problem, već i način na koji mu prilaziš iznutra.<br><br>Ovaj prikaz može pokazati pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se iskustvo oko \"" + inputRaw + "\" ne pojavljuje slučajno.",
+            "Kada se slične situacije vraćaju kroz posao i svakodnevne obaveze, često se ne ponavlja samo spoljašnji problem, već i isti unutrašnji pritisak.",
+            "Ono što je sada vidljivo može biti prvi trag obrasca koji traži da bude sagledan mirnije i jasnije."
+          ],
+          [
+            "Ono što si napisao već pokazuje da se nešto vraća kroz isti ton iskustva.",
+            "U poslovnom prostoru ponavljanje često ne dolazi samo iz okolnosti, već i iz načina na koji se isti teret stalno ponovo otvara.",
+            "Početni uvid ovde ne zatvara priču, već prvi put daje jasniji oblik onome što se već duže oseća."
+          ]
         ],
         odnos: [
-          "Kada se slične situacije vraćaju kroz odnose, to često pokazuje da se kroz bliskost ponavlja obrazac koji još nije potpuno razjašnjen.<br><br>Odnosi često otvaraju ono što se najteže vidi kada se posmatraš samo kroz razum.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Ponavljanje kroz odnos sa drugima obično nije slučajno, već znak da se isti unutrašnji obrazac pojavljuje u različitim oblicima.<br><br>Kada se to primeti, postaje moguće da se šira slika sagleda mirnije i jasnije.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se kroz odnos ponavlja nešto što još nije do kraja razjašnjeno.",
+            "Kada se sličan osećaj vraća kroz bliskost sa drugima, to često pokazuje da isti obrazac ostaje aktivan između vas.",
+            "Ono što je sada postalo vidljivo može biti prvi jasan trag tog ponavljanja."
+          ],
+          [
+            "Ono što si napisao ne deluje kao izdvojena situacija.",
+            "Kada se slična napetost ili nejasnoća vraća kroz odnos, obično se ne radi samo o jednom trenutku, već o obrascu koji se ponavlja.",
+            "Početni uvid ovde služi da taj obrazac prvi put dobije jasniji oblik."
+          ]
         ],
         novac: [
-          "Kada se napetost, manjak ili pritisak stalno vraćaju kroz novac, to često ukazuje na dublji obrazac sigurnosti, vrednosti i odnosa prema osloncu.<br><br>Spoljašnji problem tada često nosi i unutrašnju poruku koja još nije potpuno viđena.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Ponavljanje sličnih finansijskih okolnosti često znači da se iskustvo kreće kroz obrazac koji traži šire sagledavanje, a ne samo trenutno rešavanje.<br><br>Kada se isti pritisak vraća, važno je videti i dublji tok koji ga prati.<br><br>Ovaj prikaz daje početni pravac, ali ne pokazuje ceo tok.<br><br>Za potpun lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se iskustvo oko \"" + inputRaw + "\" vraća kroz isti ton pritiska.",
+            "Kada se napetost ili manjak stalno otvaraju kroz novac, često se ne ponavlja samo situacija, već i isti osećaj nesigurnosti ili opterećenja.",
+            "Ono što sada vidiš može biti prvi jasan pogled na obrazac koji se već neko vreme vraća."
+          ],
+          [
+            "Ono što si napisao pokazuje da se nešto u vezi sa novcem ponavlja kroz sličan unutrašnji doživljaj.",
+            "Takvo vraćanje često traži da se obrazac vidi šire, a ne samo kroz trenutno rešavanje problema.",
+            "Početni uvid ovde otvara prvi mirniji pogled na ono što se trenutno vraća."
+          ]
         ],
         umor: [
-          "Kada se umor ili pritisak stalno vraćaju, to često pokazuje da se ne traži još napora, već drugačije sagledavanje onoga što se već dugo nosi.<br><br>Ponekad telo i svakodnevni ritam prvi pokažu da je obrazac stigao do tačke u kojoj traži više pažnje.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Osećaj iscrpljenosti koji se vraća često nije samo prolazna faza, već signal da se iskustvo ponavlja kroz obrazac koji još nije potpuno osvetljen.<br><br>Kada se zastane i pogleda širi period, slika obično postaje jasnija.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se umor ili pritisak ne pojavljuju bez razloga.",
+            "Kada se isti osećaj vraća kroz svakodnevicu, to često pokazuje da obrazac već dugo traži više pažnje.",
+            "Ono što sada postaje vidljivo može biti prvi korak ka jasnijem razumevanju onoga što nosiš."
+          ],
+          [
+            "Ono što si napisao pokazuje da se isti teret vraća kroz sličan osećaj iscrpljenosti.",
+            "Takav povratak često ne traži još napora, već drugačije sagledavanje onoga što je već dugo prisutno.",
+            "Početni uvid ovde pomaže da se taj obrazac prvi put jasnije vidi."
+          ]
         ],
         ponavljanje: [
-          "Ono što se stalno vraća često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije ponavljaju kroz različite okolnosti, to obično znači da se nalaziš u periodu u kome je potrebno sagledati širu sliku svog ciklusa.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Ponavljanje istih osećaja ili situacija obično znači da iskustvo pokušava da skrene pažnju na obrazac koji još nije do kraja primećen.<br><br>Kada se to prepozna, postaje lakše razumeti zašto se isti krug vraća.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se isto iskustvo vraća kroz različite okolnosti.",
+            "Kada se slične situacije stalno ponavljaju, to često pokazuje da isti obrazac ostaje aktivan i kada spolja sve deluje drugačije.",
+            "Ono što se sada vidi može biti prvi jasan pogled na to ponavljanje."
+          ],
+          [
+            "Ono što si napisao već nosi osećaj da se nešto vraća na isto mesto.",
+            "Takvo ponavljanje obično ne traži još jedno brzo objašnjenje, već mirnije sagledavanje obrasca koji se stalno otvara.",
+            "Početni uvid ovde služi da to ponavljanje dobije jasniji oblik."
+          ]
         ],
         zastoj: [
-          "Kada postoji osećaj zastoja, to često ne znači da se ništa ne događa, već da se iskustvo nalazi u fazi koja traži drugačije čitanje i više unutrašnje jasnoće.<br><br>Spolja može delovati kao mirovanje, ali iznutra se često priprema važan pomak u razumevanju.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Osećaj da stojiš u mestu često ukazuje na obrazac koji još nije razjašnjen, a ne nužno na to da nema kretanja.<br><br>Ponekad je upravo zastoj poziv da se sagleda širi tok kroz koji prolaziš.<br><br>Ovaj prikaz može pokazati pravac, ali ne otkriva ceo tok.<br><br>Za dublji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da zastoj ne mora značiti da se ništa ne događa.",
+            "Kada postoji osećaj da sve stoji, često je aktivan obrazac koji još nije dovoljno jasno viđen.",
+            "Ono što sada postaje vidljivo može biti prvi trag tog dubljeg kretanja."
+          ],
+          [
+            "Ono što si napisao pokazuje osećaj stajanja koji traje duže nego što izgleda spolja.",
+            "Takav zastoj često nije samo odsustvo pomaka, već trenutak u kome obrazac traži jasnije sagledavanje.",
+            "Početni uvid ovde otvara prvi pogled na ono što se iza tog osećaja ponavlja."
+          ]
         ],
         nejasnoca: [
-          "Kada je nešto dugo nejasno, to često znači da iskustvo još nije spremno da se vidi kroz brz odgovor, već kroz širu sliku i dublje povezivanje onoga što se ponavlja.<br><br>Nejasnoća ponekad nije odsustvo smisla, već znak da je potrebno drugačije sagledavanje.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Osećaj zbunjenosti često se javlja kada obrazac postoji, ali još nije potpuno imenovan.<br><br>Kada se zastane i pogleda širi period, ono što je delovalo maglovito često počinje da dobija oblik.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da nejasnoća nije prazna.",
+            "Kada nešto dugo ostaje bez jasnog oblika, često to znači da obrazac postoji, ali još nije dovoljno imenovan.",
+            "Ono što sada vidiš može biti prvi korak ka tome da ono maglovito počne da dobija jasniji oblik."
+          ],
+          [
+            "Ono što si napisao pokazuje da se zbunjenost ne pojavljuje bez razloga.",
+            "Kada ista nejasnoća traje, često se iza nje nalazi obrazac koji još nije postao dovoljno vidljiv.",
+            "Početni uvid ovde služi da taj prvi oblik postane jasniji."
+          ]
         ],
         opsti: [
-          "Ono što se u životu ponavlja često nije slučajno, već deo obrasca koji još nije potpuno sagledan.<br><br>Kada se iste situacije vraćaju kroz različite okolnosti, to obično znači da se nalaziš u određenoj etapi svog ličnog ciklusa.<br><br>Ovaj prikaz može pokazati pravac, ali ne daje celu sliku.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus.",
-          "Ponavljanje istih situacija obično znači da se iskustvo kreće kroz obrazac koji još nije do kraja primećen.<br><br>Kada se nešto vraća u različitim oblicima, to često pokazuje da se nalaziš u periodu u kome je potrebno sagledati širu sliku.<br><br>Ovaj prikaz može dati smer, ali ne i potpun uvid.<br><br>Za precizniji lični uvid potrebno je sagledati ceo ciklus."
+          [
+            "Iz onoga što si napisao vidi se da se nešto u tvom iskustvu vraća na slično mesto.",
+            "Kada se isti ton situacije ponavlja kroz različite okolnosti, to često pokazuje da isti obrazac ostaje aktivan.",
+            "Ono što sada vidiš može biti prvi jasan pogled na ono što se već neko vreme ponavlja."
+          ],
+          [
+            "Ono što si napisao ne deluje kao slučajna situacija.",
+            "Kada se sličan osećaj ili tok vraća, često postoji obrazac koji još nije dovoljno jasno sagledan.",
+            "Početni uvid ovde pomaže da ono što se ponavlja prvi put dobije jasniji oblik."
+          ]
         ]
       };
 
       function detectTheme(text) {
-        const priorityOrder = ["ponavljanje", "posao", "odnos", "novac", "umor", "zastoj", "nejasnoca"];
+        const priorityOrder = ["odnos", "posao", "novac", "umor", "zastoj", "nejasnoca", "ponavljanje"];
 
         for (const theme of priorityOrder) {
           for (const keyword of themes[theme]) {
@@ -298,35 +418,46 @@
       const detectedTheme = detectTheme(input);
       const selectedText = pickRandom(texts[detectedTheme]);
 
-      let nextStepText = "";
-      let nextStepLink = "";
-      let nextStepLabel = "";
-      let nextStepNote = "";
-
-      if (["posao", "odnos", "novac", "ponavljanje"].includes(detectedTheme)) {
-        nextStepText =
-          "Ako želiš da vidiš ovaj obrazac kroz širi tok u kome se kreće, možeš nastaviti dalje.<br><br>";
-        nextStepLink = "https://uvid.unlocktheessence.com/";
-        nextStepLabel = "Otvori lični uvid";
-        nextStepNote = "Pisani lični dokument • dublji uvid u obrazac • bez plaćanja unapred";
-      } else {
-        nextStepText =
-          "Ako želiš da ostaneš još malo uz ovo i vidiš gde se sada nalaziš, možeš nastaviti dalje.<br><br>";
-        nextStepLink = "https://zahtev.unlocktheessence.com/";
-        nextStepLabel = "Pogledaj trenutni uvid";
-        nextStepNote = "Kratak prikaz trenutnog stanja • bez obaveze • prvi korak";
+      let recommendedLink = "";
+      if (detectedTheme === "odnos") {
+        recommendedLink = `
+          <a class="secondary-link" href="https://odnosi.unlocktheessence.com/" target="_blank">
+            Pogledaj i stranicu za odnose
+          </a>
+          <div class="aftercta">
+            Ako želiš da ovaj obrazac prvo sagledaš kroz relacijski sloj, ovde možeš ući tim putem.
+          </div>
+        `;
       }
 
-      result.innerHTML =
-        "<b>Početni uvid</b><br><br>" +
-        intro +
-        specific +
-        selectedText +
-        "<br><br>" +
-        "Ono što se ovde vidi je početak jasnijeg sagledavanja.<br><br>" +
-        nextStepText +
-        "<a class='cta' href='" + nextStepLink + "' target='_blank'>" + nextStepLabel + "</a>" +
-        "<div class='aftercta'>" + nextStepNote + "</div>";
+      result.innerHTML = `
+        <div class="insight-doc">
+          <div class="doc-label">Početni uvid</div>
+          <h2 class="doc-title">Prvi pogled na ono što se sada ponavlja</h2>
+
+          <div class="doc-body">
+            <p>${selectedText[0]}</p>
+            <p>${selectedText[1]}</p>
+            <p>${selectedText[2]}</p>
+          </div>
+
+          <div class="next-step">
+            <div class="doc-body">
+              <p>Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.</p>
+            </div>
+
+            <a class="cta" href="https://uvid.unlocktheessence.com/#zahtev" target="_blank">
+              Zatraži kratki uvid
+            </a>
+
+            <div class="aftercta">
+              Kratak pisani uvid • prvi jasniji pogled • bez plaćanja unapred
+            </div>
+
+            ${recommendedLink}
+          </div>
+        </div>
+      `;
     }
   </script>
 </body>
