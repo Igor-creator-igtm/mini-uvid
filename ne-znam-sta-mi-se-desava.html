@@ -7,284 +7,104 @@
   <title>Ne znam šta mi se dešava | Unlock the Essence</title>
   <meta
     name="description"
-    content="Ako imaš osećaj da ne znaš šta ti se dešava, ovde možeš da kreneš od pitanja koje ti je trenutno najbliže i sagledaš svoj trenutak jasnije."
+    content="Ako imaš osećaj da ne znaš šta ti se dešava, ovde možeš krenuti od pitanja koje ti je trenutno najbliže i sagledati svoj trenutak jasnije."
   />
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: #f6f1ea;
-      color: #2f2a26;
-      line-height: 1.75;
-    }
-
-    .site-shell {
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 48px 20px 56px;
-    }
-
-    .site-header {
-      margin-bottom: 34px;
-    }
-
-    .brand-link {
-      color: #6f655c;
-      text-decoration: none;
-      font-size: 0.98rem;
-      border-bottom: 1px solid rgba(111, 101, 92, 0.35);
-      padding-bottom: 2px;
-    }
-
-    .brand-link:hover {
-      color: #2f2a26;
-      border-bottom-color: rgba(47, 42, 38, 0.45);
-    }
-
-    .page-card {
-      max-width: 760px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 28px;
-      padding: 42px 34px 36px;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.05);
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-size: 2.7rem;
-      font-weight: 500;
-      line-height: 1.15;
-      color: #2f2a26;
-      letter-spacing: -0.02em;
-    }
-
-    .intro {
-      margin: 0 0 18px;
-      font-size: 1.12rem;
-      color: #5f574f;
-    }
-
-    p {
-      margin: 0 0 18px;
-      font-size: 1.04rem;
-      color: #645d56;
-    }
-
-    .entry-group {
-      margin-top: 34px;
-      padding-top: 6px;
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.45rem;
-      font-weight: 500;
-      line-height: 1.25;
-      color: #2f2a26;
-    }
-
-    .entry-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-
-    .entry-list li {
-      margin: 0;
-    }
-
-    .entry-list a {
-      display: block;
-      padding: 16px 18px;
-      border-radius: 18px;
-      text-decoration: none;
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(0,0,0,0.06);
-      color: #3e3833;
-      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .entry-list a:hover {
-      transform: translateY(-1px);
-      border-color: rgba(122, 92, 67, 0.25);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.05);
-    }
-
-    .entry-list a strong {
-      display: block;
-      font-weight: 600;
-      color: #2f2a26;
-      margin-bottom: 4px;
-    }
-
-    .entry-list a span {
-      display: block;
-      font-size: 0.96rem;
-      color: #716960;
-    }
-
-    .closing-note {
-      margin-top: 38px;
-      padding: 26px 24px;
-      background: rgba(255,255,255,0.52);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 22px;
-    }
-
-    .cta-link {
-      display: inline-block;
-      margin-top: 4px;
-      color: #7a5c43;
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 1px solid rgba(122, 92, 67, 0.35);
-      padding-bottom: 2px;
-    }
-
-    .cta-link:hover {
-      color: #5f4532;
-      border-bottom-color: rgba(95, 69, 50, 0.5);
-    }
-
-    .site-footer {
-      max-width: 760px;
-      margin: 22px auto 0;
-      padding-top: 6px;
-    }
-
-    .site-footer a {
-      color: #7b7268;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border-bottom: 1px solid rgba(123, 114, 104, 0.35);
-      padding-bottom: 2px;
-    }
-
-    .site-footer a:hover {
-      color: #2f2a26;
-      border-bottom-color: rgba(47, 42, 38, 0.45);
-    }
-
-    @media (max-width: 640px) {
-      .site-shell {
-        padding: 30px 16px 42px;
-      }
-
-      .page-card {
-        padding: 28px 20px 24px;
-        border-radius: 22px;
-      }
-
-      h1 {
-        font-size: 2.05rem;
-      }
-
-      h2 {
-        font-size: 1.28rem;
-      }
-
-      .intro,
-      p,
-      .entry-list a {
-        font-size: 1rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="site-shell">
+
     <header class="site-header">
       <a class="brand-link" href="https://www.unlocktheessence.com">Unlock the Essence</a>
     </header>
 
     <main class="page-card">
+
       <h1>Ne znam šta mi se dešava</h1>
 
-<p class="intro">
-  Nekad ne postoji jedan jasan problem, ali postoji osećaj da nešto više nije isto kao pre.
-</p>
+      <p class="intro">
+        Nekad ne postoji jedan jasan problem,
+        ali postoji osećaj da nešto više nije isto kao pre.
+      </p>
 
-<p>
-  Možda ne možeš tačno da objasniš šta se menja,
-  ali osećaš da ti je potreban mirniji pogled na ono što se trenutno dešava.
-</p>
-
-<p>
-  Ne moraš da znaš odakle da kreneš.
-  Možeš krenuti od onoga što ti je sada najbliže.
-</p>
+      <p>
+        Ne moraš da znaš odakle da kreneš.
+        Možeš krenuti od onoga što ti je sada najbliže.
+      </p>
 
       <section class="entry-group">
-        <h2>Ako pokušavaš da razumeš svoj trenutak</h2>
+        <h2>Ako želiš da razumeš svoj trenutak</h2>
+
         <ul class="entry-list">
           <li>
             <a href="https://kako.unlocktheessence.com/sta-mi-se-desava-u-zivotu-trenutno.html">
               <strong>Šta mi se dešava u životu trenutno</strong>
-              <span>Za trenutke kada osećaš promenu, ali još ne vidiš jasan pravac.</span>
+              <span>Kada osećaš promenu, ali još ne vidiš pravac.</span>
             </a>
           </li>
+
           <li>
             <a href="https://kako.unlocktheessence.com/zasto-se-ovako-osecam-ovih-dana.html">
               <strong>Zašto se ovako osećam ovih dana</strong>
-              <span>Za trenutke kada osećaj postoji, ali objašnjenje još nije jasno.</span>
+              <span>Kada osećaj postoji, ali objašnjenje nije jasno.</span>
             </a>
           </li>
+
           <li>
             <a href="https://kako.unlocktheessence.com/kako-da-razumem-sta-mi-se-desava.html">
               <strong>Kako da razumem šta mi se dešava</strong>
-              <span>Za trenutke kada pokušavaš da povežeš ono što osećaš sa širim tokom.</span>
+              <span>Kada pokušavaš da povežeš ono što osećaš.</span>
             </a>
           </li>
         </ul>
       </section>
 
       <section class="entry-group">
-        <h2>Ako osećaš da se nešto dublje ponavlja</h2>
+        <h2>Ako osećaš da se nešto ponavlja</h2>
+
         <ul class="entry-list">
           <li>
             <a href="https://zasto.unlocktheessence.com/zasto-se-stalno-vracam-na-isto.html">
               <strong>Zašto se stalno vraćam na isto</strong>
-              <span>Za trenutke kada se slični obrasci vraćaju kroz različite okolnosti.</span>
+              <span>Kada se isti obrazac vraća kroz različite situacije.</span>
             </a>
           </li>
+
           <li>
             <a href="https://zasto.unlocktheessence.com/zasto-ne-mogu-da-pokrenem-stvari.html">
               <strong>Zašto ne mogu da pokrenem stvari</strong>
-              <span>Za trenutke kada postoji želja za pomakom, ali pokret izostaje.</span>
+              <span>Kada postoji želja, ali pomak izostaje.</span>
             </a>
           </li>
         </ul>
       </section>
 
-    <section class="closing-note">
-  <p>
-    Ako želiš da kreneš bez razmišljanja o izboru,
-    možeš početi od kratkog početnog uvida.
-  </p>
+      <section class="closing-note">
 
-  <p>
-    Ponekad je dovoljno da napišeš jednu rečenicu o onome što ti se sada ponavlja,
-    da bi obrazac počeo da se vidi jasnije.
-  </p>
+        <p>
+          Ako ne želiš da biraš,
+          možeš krenuti direktno od jednog početnog uvida.
+        </p>
 
-  <a class="cta-link" href="https://trenutak.unlocktheessence.com">
-    Pogledaj početni uvid
-  </a>
-</section>
+        <p>
+          Jedna rečenica je dovoljna
+          da se obrazac počne videti jasnije.
+        </p>
+
+        <a class="cta-link" href="https://trenutak.unlocktheessence.com">
+          Pokreni početni uvid
+        </a>
+
+      </section>
+
     </main>
 
     <footer class="site-footer">
       <a href="https://www.unlocktheessence.com">Nazad na Unlock the Essence</a>
     </footer>
+
   </div>
 </body>
 </html>
