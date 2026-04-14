@@ -108,6 +108,35 @@
       line-height: 1.6;
     }
 
+    .passive-path {
+      margin: 18px auto 6px;
+      max-width: 460px;
+      padding-top: 16px;
+      border-top: 1px solid #ece3d8;
+    }
+
+    .passive-text {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: #7a6f63;
+      line-height: 1.6;
+    }
+
+    .passive-link {
+      display: inline-block;
+      font-size: 15px;
+      color: #6a503b;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(106, 80, 59, 0.28);
+      padding-bottom: 2px;
+      transition: 0.2s ease;
+    }
+
+    .passive-link:hover {
+      color: #4f3c2d;
+      border-bottom-color: rgba(79, 60, 45, 0.45);
+    }
+
     .result {
       margin-top: 26px;
       display: none;
@@ -228,12 +257,21 @@
         Ljudi često napišu ono što ih već dugo prati, ali još nema jasan oblik.
       </p>
 
-      <button onclick="showInsight()">Pogledaj svoj početni uvid</button>
-
       <p class="note">
         Dobićeš kratak početni uvid koji može pokazati obrazac koji se možda ponavlja.
         Ovo je prvi korak ka jasnijem sagledavanju.
       </p>
+
+      <div class="passive-path">
+        <p class="passive-text">
+          Ako ne želiš sada da pišeš, možeš nastaviti i bez toga.
+        </p>
+        <a class="passive-link" href="https://zahtev.unlocktheessence.com/">
+          Pogledaj kratak uvid
+        </a>
+      </div>
+
+      <button onclick="showInsight()">Pogledaj svoj početni uvid</button>
 
       <div class="result" id="result"></div>
     </div>
@@ -426,11 +464,11 @@
       let nextStepIntro = "Ako želiš da vidiš ovaj obrazac malo jasnije, možeš nastaviti dalje.";
 
       if (detectedTheme === "odnos") {
-  nextStepLink = "https://odnosi.unlocktheessence.com/";
-  nextStepLabel = "Pogledaj stranicu za odnose";
-  nextStepNote = "Relacijski sloj • jasniji pogled na obrazac između vas";
-  nextStepIntro = "Ako želiš da ovaj obrazac prvo sagledaš kroz relacijski sloj, možeš nastaviti ovim putem.";
-}
+        nextStepLink = "https://odnosi.unlocktheessence.com/";
+        nextStepLabel = "Pogledaj stranicu za odnose";
+        nextStepNote = "Relacijski sloj • jasniji pogled na obrazac između vas";
+        nextStepIntro = "Ako želiš da ovaj obrazac prvo sagledaš kroz relacijski sloj, možeš nastaviti ovim putem.";
+      }
 
       result.innerHTML = `
         <div class="insight-doc">
